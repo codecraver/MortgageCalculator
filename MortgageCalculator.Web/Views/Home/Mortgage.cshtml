@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MortgageCalculator.Dto.Mortgage>
+@{
+    ViewBag.Title = "Mortgage";
+}
+<div class="container" style="margin-top:20px">
+    <h2>Mortgages</h2>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>@Html.ActionLink("Type", "GetMortgages", 
+                   new { sortOrder =  ViewBag.TypeSortParm })
+                   <span class="glyphicon glyphicon-sort" aria-hidden="true"</span>
+                </th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>@Html.ActionLink("Interest", "GetMortgages",
+                   new { sortOrder = ViewBag.ROIParm })
+                   <span class="glyphicon glyphicon-sort" aria-hidden="true"</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MortgageId</td>
+                    <td>@item.Name</td>
+                    <td>@item.MortgageType.ToString()</td>
+                    <td>@item.EffectiveStartDate</td>
+                    <td>@item.EffectiveEndDate</td>
+                    <td>@item.InterestRate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
